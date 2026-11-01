@@ -63,7 +63,13 @@ services:
     ports:
       - "9201:9200"
     environment:
-      - "OPENSEARCH_JAVA_OPTS=-Xms1g -Xmx1g"
+      # Heap must be sized for the data volume, not the initial empty cluster.
+      # At 1g the indexer OOMs ("java.lang.OutOfMemoryError: Java heap space"),
+      # exits 127, and crash-loops under restart:always, which leaves the
+      # dashboard stuck on "waiting until all OpenSearch nodes are compatible".
+      # The indexer holds ~21 GB / 180 indices; 4g is the size the stack ran
+      # at before the GitOps migration wrote 1g into this file.
+      - "OPENSEARCH_JAVA_OPTS=-Xms4g -Xmx4g"
     ulimits:
       memlock:
         soft: -1
