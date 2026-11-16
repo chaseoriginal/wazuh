@@ -4,7 +4,7 @@
 
 services:
   wazuh.manager:
-    image: wazuh/wazuh-manager:4.14.6
+    image: wazuh/wazuh-manager:4.14.10
     hostname: wazuh.manager
     container_name: wazuh-manager
     restart: always
