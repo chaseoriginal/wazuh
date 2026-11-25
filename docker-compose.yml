@@ -56,7 +56,7 @@ services:
       - wazuh-net
 
   wazuh.indexer:
-    image: wazuh/wazuh-indexer:4.14.10
+    image: wazuh/wazuh-indexer:4.14.11
     hostname: wazuh.indexer
     container_name: wazuh-indexer
     restart: always
