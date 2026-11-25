@@ -90,7 +90,7 @@ services:
       - wazuh-net
 
   wazuh.dashboard:
-    image: wazuh/wazuh-dashboard:4.14.10
+    image: wazuh/wazuh-dashboard:4.14.11
     hostname: wazuh.dashboard
     container_name: wazuh-dashboard
     restart: always
